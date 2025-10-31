@@ -3,7 +3,7 @@ import Icons from "../ui/icons";
 
 export default function Footer() {
   return (
-    <footer className="bg-black px-6 py-12 text-white md:px-10 lg:px-20">
+    <footer className="bg-[#141414] px-6 py-12 text-white md:px-10 lg:px-20">
       <div className="container mx-auto flex max-w-277.5 flex-col items-center md:items-start lg:justify-between">
         <div className="mb-10 flex w-full flex-col items-center md:items-start lg:mb-9 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <Link href="/" className="mb-8 text-3xl font-bold lg:mb-0">
