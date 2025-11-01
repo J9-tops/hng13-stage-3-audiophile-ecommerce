@@ -6,8 +6,6 @@ export default function HeroSection() {
       <div className="relative mx-auto flex w-full max-w-277.5 items-center justify-center lg:justify-between">
         <div className="absolute inset-0 flex items-center justify-center lg:relative lg:order-2 lg:w-1/2">
           <div className="relative aspect-square w-full max-w-md lg:max-w-lg">
-            {/* <div className="absolute inset-0 rounded-full border border-gray-700 opacity-50"></div> */}
-
             <div className="absolute inset-0 flex items-center justify-center p-8">
               <Image
                 width={500}
