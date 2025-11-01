@@ -29,7 +29,7 @@ export default function SecondProduct() {
           <div className="flex h-full w-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
             <Image
               src="/images/speakers/sample-2.png"
-              alt="XX99 Mark I Headphones"
+              alt="ZX7 SPEAKER"
               width={250}
               height={250}
               className="object-contain"

@@ -7,8 +7,8 @@ export default function TopProduct() {
         <div className="grid grid-cols-1 items-center gap-8 text-center lg:grid-cols-2 lg:text-left">
           <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
             <Image
-              src="/images/speakers/sample.png"
-              alt="ZX9 SPEAKER"
+              src="/images/earphones/sample.png"
+              alt="YX1 WIRELESS EARPHONES"
               width={250}
               height={250}
               className="object-contain"
@@ -21,16 +21,16 @@ export default function TopProduct() {
             </p>
 
             <h1 className="text-4xl leading-tight font-bold text-black">
-              ZX9
+              YX1 WIRELESS
               <br />
-              SPEAKER
+              EARPHONES
             </h1>
 
             <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
-              Upgrade your sound system with the all new ZX9 active speaker.
-              It’s a bookshelf speaker system that offers truly wireless
-              connectivity -- creating new possibilities for more pleasing and
-              practical audio setups.
+              Tailor your listening experience with bespoke dynamic drivers from
+              the new YX1 Wireless Earphones. Enjoy incredible high-fidelity
+              sound even in noisy environments with its active noise
+              cancellation feature.
             </p>
 
             <div className="pt-4">
