@@ -1,3 +1,4 @@
+import CompanyNote from "@/components/pages/home/CompanyNote";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import type { Metadata } from "next";
@@ -38,6 +39,7 @@ export default function RootLayout({
         <div className="font-manrope">
           <Navbar />
           {children}
+          <CompanyNote />
           <Footer />
         </div>
       </body>
