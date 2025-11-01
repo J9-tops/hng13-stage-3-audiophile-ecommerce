@@ -4,9 +4,28 @@ export default function CompanyNote() {
   return (
     <section className="relative my-16 mb-10 min-h-[500px] w-full overflow-hidden md:min-h-[600px] lg:mb-20">
       <div className="container mx-auto max-w-277.5 px-6 md:px-12 md:py-20 lg:px-0">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="my-auto max-w-xl space-y-6">
-            <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+        <div className="flex flex-col items-center gap-12 lg:flex-row-reverse">
+          <div className="w-full lg:h-[500px]">
+            <picture>
+              <source
+                srcSet="/images/home/man.png"
+                media="(min-width:1024px)"
+              />
+              <source
+                srcSet="/images/home/man-tablet.png"
+                media="(min-width:768px)"
+              />
+              <Image
+                src="/images/home/man.png"
+                width={540}
+                height={588}
+                alt="man listening to music with xyz headphones"
+                className="h-full w-full object-contain"
+              />
+            </picture>
+          </div>
+          <div className="my-auto max-w-xl space-y-6 text-center lg:text-left">
+            <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:max-w-lg">
               BRINGING YOU THE <span className="text-orange-500">BEST</span>{" "}
               AUDIO GEAR
             </h2>
@@ -21,7 +40,7 @@ export default function CompanyNote() {
             </p>
           </div>
 
-          <div className="relative h-[400px] md:h-[500px]">
+          {/* <div className="relative hidden h-[400px] md:block md:h-[500px]">
             <Image
               src="/images/home/man.png"
               width={540}
@@ -29,7 +48,7 @@ export default function CompanyNote() {
               alt="man listening to music with xyz headphones"
               className="h-full w-full object-contain"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
