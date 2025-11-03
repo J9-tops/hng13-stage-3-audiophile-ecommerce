@@ -1,7 +1,4 @@
-import ModalWrapper from "@/components/ModalWrapper";
-import CompanyNote from "@/components/pages/home/CompanyNote";
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/Navbar";
+import ClientLayout from "@/components/shared/ClientLayout";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
@@ -37,13 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        <ModalWrapper />
-        <div className="font-manrope">
-          <Navbar />
-          {children}
-          <CompanyNote />
-          <Footer />
-        </div>
+        <ClientLayout>{children} </ClientLayout>
       </body>
     </html>
   );
