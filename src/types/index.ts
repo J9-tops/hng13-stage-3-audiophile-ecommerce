@@ -22,7 +22,7 @@ export interface ProductOther {
 }
 
 export interface Product {
-  id: number | string;
+  _id: number | string;
   slug: string;
   name: string;
   image: ProductImageSet;

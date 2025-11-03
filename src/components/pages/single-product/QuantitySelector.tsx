@@ -1,17 +1,21 @@
 "use client";
-import { useState } from "react";
+import useCartStore from "@/stores/cart";
+import { Product } from "@/types";
 
-const QuantitySelector = () => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelector = ({ product }: { product: Product }) => {
+  const cartItem = useCartStore((state) =>
+    state.cart.find((i) => i._id === product._id),
+  );
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
 
   const decrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (cartItem?.quantity && cartItem.quantity > 1) {
+      updateItemQuantity(product._id, cartItem.quantity - 1);
     }
   };
 
   const increase = () => {
-    setQuantity(quantity + 1);
+    updateItemQuantity(product._id, (cartItem?.quantity || 0) + 1);
   };
 
   return (
@@ -24,8 +28,8 @@ const QuantitySelector = () => {
         −
       </button>
 
-      <span className="min-w-[2rem] text-center text-2xl font-bold text-black">
-        {quantity}
+      <span className="min-w-8 text-center text-2xl font-bold text-black">
+        {cartItem?.quantity || 1}
       </span>
 
       <button

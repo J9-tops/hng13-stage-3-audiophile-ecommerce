@@ -1,7 +1,5 @@
-import Features from "@/components/pages/headphones/single-product/Features";
-import ImageGallery from "@/components/pages/headphones/single-product/ImageGallery";
-import MainDetails from "@/components/pages/headphones/single-product/MainDetails";
 import { AudioProductsSection } from "@/components/pages/home/ProductShowCase";
+import MainPage from "@/components/pages/single-product/MainPage";
 
 export default async function Page({
   params,
@@ -9,11 +7,10 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
   return (
     <>
-      <MainDetails slug={slug} />
-      <Features />
-      <ImageGallery />
+      <MainPage slug={slug} />
       <AudioProductsSection />
     </>
   );
