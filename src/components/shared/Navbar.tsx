@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icons from "../ui/icons";
+import CartButton from "./CartButton";
 import MobileNav from "./MobileNav";
 
 const navLinks = [
@@ -35,9 +36,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        <button className="flex justify-end p-3 lg:min-w-32">
-          <Icons name="cart" />
-        </button>
+        <CartButton />
       </div>
     </nav>
   );

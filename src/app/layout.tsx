@@ -1,3 +1,4 @@
+import ModalWrapper from "@/components/ModalWrapper";
 import CompanyNote from "@/components/pages/home/CompanyNote";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
+        <ModalWrapper />
         <div className="font-manrope">
           <Navbar />
           {children}
