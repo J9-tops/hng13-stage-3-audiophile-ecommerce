@@ -1,13 +1,14 @@
 "use client";
 
+import Spinner from "@/components/shared/Spinner";
 import useCartStore from "@/stores/cart";
 import Image from "next/image";
 
 type Props = {
-  handleSubmit: () => void;
+  paying: boolean;
 };
 
-export default function Summary({ handleSubmit }: Props) {
+export default function Summary({ paying }: Props) {
   const { cart, getTotalPrice } = useCartStore();
   const total = getTotalPrice();
 
@@ -68,10 +69,13 @@ export default function Summary({ handleSubmit }: Props) {
       </div>
 
       <button
-        onClick={handleSubmit}
-        className="w-full cursor-pointer bg-[#D87D4A] py-4 text-sm font-bold tracking-wider text-white transition-colors hover:bg-[#FBAF85]"
+        type="submit"
+        form="orderForm"
+        disabled={paying}
+        className="flex w-full cursor-pointer items-center justify-center gap-4 bg-[#D87D4A] py-4 text-sm font-bold tracking-wider text-white transition-colors hover:bg-[#FBAF85]"
       >
-        CONTINUE & PAY
+        {paying && <Spinner />}
+        <p>{paying ? "CONFIRMING ORDER" : "CONTINUE & PAY"}</p>
       </button>
     </div>
   );

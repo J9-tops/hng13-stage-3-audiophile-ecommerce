@@ -8,11 +8,13 @@ import { CheckoutFormValues, checkoutSchema } from "@/types/checkout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 
 const CheckoutPage = () => {
+  const [paying, setPaying] = useState(false);
+  const { cart, getTotalPrice } = useCartStore();
   const {
     register,
     handleSubmit,
@@ -32,11 +34,12 @@ const CheckoutPage = () => {
       paymentMethod: undefined,
       eMoneyNumber: "",
       eMoneyPIN: "",
+      items: cart,
     },
   });
 
   const router = useRouter();
-  const { cart } = useCartStore();
+
   const { updateModal } = useModalStore();
 
   const paymentMethod = useWatch<CheckoutFormValues>({
@@ -46,17 +49,53 @@ const CheckoutPage = () => {
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
-      await axios.post(`/api/send-order`, data);
+      setPaying(true);
 
-      toast.success("Message sent successfully!");
+      const subtotal = getTotalPrice();
+      const shipping = 500;
+      const vat = 400;
+      const total = subtotal + shipping + vat;
 
-      reset();
+      const orderItems = cart.map((item) => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.image.desktop,
+      }));
+
+      const fullData = {
+        name: data.name,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        address: data.address,
+        zipCode: data.zipCode,
+        city: data.city,
+        country: data.country,
+        paymentMethod: data.paymentMethod,
+        eMoneyNumber: data.eMoneyNumber,
+        eMoneyPIN: data.eMoneyPIN,
+        items: orderItems,
+        subtotal,
+        shipping,
+        vat,
+        total,
+      };
+
+      console.log("Sending order data:", fullData);
+      await axios.post(`/api/send-order`, fullData);
+
+      toast.success("Order placed successfully!");
       updateModal({ status: "open", modalType: "orderConfirmation" });
+      reset();
+
+      setPaying(false);
     } catch (error: unknown) {
+      setPaying(false);
+      console.error("Order submission error:", error);
       if (axios.isAxiosError(error) && error.response?.data?.message) {
         toast.error(error.response.data.message);
       } else {
-        toast.error("An error occurred while sending the message.");
+        toast.error("An error occurred while processing your order.");
       }
     }
   };
@@ -75,7 +114,12 @@ const CheckoutPage = () => {
           <div className="rounded-lg bg-white p-6 md:p-12 lg:col-span-2">
             <h1 className="mb-10 text-3xl font-bold">CHECKOUT</h1>
 
-            <div>
+            <form
+              onSubmit={handleSubmit(onSubmit, (err) => {
+                console.log("❌ Validation errors:", err);
+              })}
+              id="orderForm"
+            >
               <section className="mb-10">
                 <h2 className="mb-6 text-sm font-bold tracking-wide text-[#D87D4A]">
                   BILLING DETAILS
@@ -332,11 +376,11 @@ const CheckoutPage = () => {
                   </div>
                 )}
               </section>
-            </div>
+            </form>
           </div>
 
           <div className="lg:col-span-1">
-            <Summary handleSubmit={handleSubmit(onSubmit)} />
+            <Summary paying={paying} />
           </div>
         </div>
       </div>

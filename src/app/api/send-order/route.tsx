@@ -1,4 +1,3 @@
-// app/api/orders/route.ts
 import CustomerOrderReceiptEmail from "@/components/emails/CustomerOrderRecieptTemplate";
 import OrderRequestEmail from "@/components/emails/OrderRequestTemplate";
 import { render } from "@react-email/render";
