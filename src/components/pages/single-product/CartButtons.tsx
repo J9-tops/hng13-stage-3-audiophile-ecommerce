@@ -17,7 +17,7 @@ export default function CartButtons({ product }: { product: Product }) {
 
   return (
     <div className="mx-0 grid grid-cols-2 items-center gap-6 pt-4 md:mx-auto lg:mx-0 lg:max-w-sm">
-      <QuantitySelector product={product} />
+      {isInCart && <QuantitySelector product={product} />}
 
       {!isInCart && (
         <button

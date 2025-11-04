@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Icons from "../ui/icons";
 import CartButton from "./CartButton";
 import MobileNav from "./MobileNav";
@@ -11,6 +14,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <nav className="relative bg-[#141414] text-white">
       <div className="mx-auto flex max-w-277.5 items-center justify-between border-b border-white/20 px-4 py-8.75 xl:px-0">
@@ -28,7 +33,10 @@ export default function Navbar() {
           {navLinks.map((link) => {
             return (
               <li key={link.label}>
-                <Link href={link.href} className="hover:text-[#D87D4A]">
+                <Link
+                  href={link.href}
+                  className={`hover:text-[#D87D4A] ${pathname === link.href ? "text-[#D87D4A]" : ""}`}
+                >
                   {link.label}
                 </Link>
               </li>
