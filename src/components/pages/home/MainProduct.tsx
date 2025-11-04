@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MainProductLink from "./links/MainProductLink";
 
 export default function MainProduct() {
   return (
@@ -26,9 +27,7 @@ export default function MainProduct() {
                 Upgrade to premium speakers that are phenomenally built to
                 deliver truly remarkable sound.
               </p>
-              <button className="transform cursor-pointer bg-black px-8 py-4 font-semibold tracking-wider text-white transition-all duration-300 hover:scale-105 hover:bg-[#4C4C4C]">
-                SEE PRODUCT
-              </button>
+              <MainProductLink />
             </div>
           </div>
         </div>

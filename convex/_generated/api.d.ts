@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as orders from "../orders.js";
 import type * as products from "../products.js";
 import type * as seedRunner from "../seedRunner.js";
 
@@ -26,6 +27,7 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  orders: typeof orders;
   products: typeof products;
   seedRunner: typeof seedRunner;
 }>;

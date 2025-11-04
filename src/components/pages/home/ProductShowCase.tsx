@@ -10,19 +10,19 @@ const products: Product[] = [
     id: "1",
     title: "HEADPHONES",
     image: "/images/home/headphones.png",
-    link: "/shop/headphones",
+    link: "/headphones",
   },
   {
     id: "2",
     title: "SPEAKERS",
     image: "/images/home/speaker.png",
-    link: "/shop/speakers",
+    link: "/speakers",
   },
   {
     id: "3",
     title: "EARPHONES",
     image: "/images/home/earphones.png",
-    link: "/shop/earphones",
+    link: "/earphones",
   },
 ];
 

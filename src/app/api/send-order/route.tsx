@@ -2,8 +2,12 @@
 import CustomerOrderReceiptEmail from "@/components/emails/CustomerOrderRecieptTemplate";
 import OrderRequestEmail from "@/components/emails/OrderRequestTemplate";
 import { render } from "@react-email/render";
+import { ConvexHttpClient } from "convex/browser";
 import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
+import { api } from "../../../../convex/_generated/api";
+
+const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 interface OrderItem {
   name: string;
@@ -13,23 +17,19 @@ interface OrderItem {
 }
 
 interface OrderData {
-  // Customer info
   name: string;
   email: string;
   phoneNumber: string;
 
-  // Shipping info
   address: string;
   zipCode: string;
   city: string;
   country: string;
 
-  // Payment info
   paymentMethod: "e-money" | "cash-on-delivery";
   eMoneyNumber?: string;
   eMoneyPIN?: string;
 
-  // Order items (this should come from your cart/state)
   items: OrderItem[];
   subtotal: number;
   shipping: number;
@@ -38,11 +38,9 @@ interface OrderData {
 }
 
 export async function POST(req: NextRequest) {
-  console.log("POST request received at /api/orders");
   try {
     const orderData: OrderData = await req.json();
 
-    // Validate required fields
     if (!orderData.name || !orderData.email || !orderData.phoneNumber) {
       return Response.json(
         {
@@ -96,7 +94,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Generate order number
     const orderNumber = `#ORD-${Date.now().toString().slice(-8)}`;
     const orderDate = new Date().toLocaleString("en-US", {
       weekday: "long",
@@ -107,7 +104,28 @@ export async function POST(req: NextRequest) {
       minute: "2-digit",
     });
 
-    // Create transporter (reused for both emails)
+    const orderId = await convex.mutation(api.orders.create, {
+      orderNumber,
+      orderDate,
+      customerName: orderData.name,
+      customerEmail: orderData.email,
+      customerPhone: orderData.phoneNumber,
+      shippingAddress: {
+        address: orderData.address,
+        city: orderData.city,
+        zipCode: orderData.zipCode,
+        country: orderData.country,
+      },
+      paymentMethod: orderData.paymentMethod,
+      eMoneyNumber: orderData.eMoneyNumber,
+      eMoneyPIN: orderData.eMoneyPIN,
+      items: orderData.items,
+      subtotal: orderData.subtotal,
+      shipping: orderData.shipping,
+      vat: orderData.vat,
+      total: orderData.total,
+    });
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -116,7 +134,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Email 1: Order notification to YOU (admin)
     const orderNotificationHtml = await render(
       OrderRequestEmail({
         customerName: orderData.name,
@@ -145,12 +162,11 @@ export async function POST(req: NextRequest) {
     const mailToYou = {
       subject: `🛒 New Order ${orderNumber} from ${orderData.name}`,
       from: `"Store Orders" <${process.env.EMAIL_USER}>`,
-      to: "j9.tops@gmail.com", // Your email
+      to: "j9.tops@gmail.com",
       replyTo: orderData.email,
       html: orderNotificationHtml,
     };
 
-    // Email 2: Order confirmation to the CUSTOMER
     const orderReceiptHtml = await render(
       CustomerOrderReceiptEmail({
         customerName: orderData.name,
@@ -176,27 +192,22 @@ export async function POST(req: NextRequest) {
 
     const mailToCustomer = {
       subject: `Order Confirmation ${orderNumber} - Thank you for your purchase! 🎉`,
-      from: `"Your Store" <${process.env.EMAIL_USER}>`, // Your store name
-      to: orderData.email, // Customer's email
+      from: `"Your Store" <${process.env.EMAIL_USER}>`,
+      to: orderData.email,
       html: orderReceiptHtml,
     };
 
-    // Send both emails concurrently
     const [infoToYou, infoToCustomer] = await Promise.all([
       transporter.sendMail(mailToYou),
       transporter.sendMail(mailToCustomer),
     ]);
-
-    // Here you would typically also:
-    // 1. Save the order to your database
-    // 2. Update inventory
-    // 3. Process payment (if using payment gateway)
 
     return Response.json(
       {
         success: true,
         message: "Order placed successfully! Confirmation emails sent.",
         orderDetails: {
+          orderId: orderId,
           orderNumber: orderNumber,
           orderDate: orderDate,
           total: orderData.total,
