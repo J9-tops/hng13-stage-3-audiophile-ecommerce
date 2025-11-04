@@ -162,7 +162,7 @@ export default function CustomerOrderReceiptEmail({
               </Section>
 
               <Section style={ctaSection}>
-                <Button href="https://j9-pi.vercel.app" style={primaryButton}>
+                <Button href="" style={primaryButton}>
                   Track Your Order
                 </Button>
               </Section>

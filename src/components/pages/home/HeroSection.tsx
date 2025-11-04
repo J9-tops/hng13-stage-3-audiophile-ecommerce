@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -34,9 +35,12 @@ export default function HeroSection() {
             made for the passionate music enthusiast.
           </p>
 
-          <button className="bg-[#D87D4A] px-8 py-4 text-sm font-semibold tracking-wider text-white uppercase transition-colors duration-300 hover:bg-orange-600">
+          <Link
+            href="/headphones/xx99-mark-two-headphones"
+            className="cursor-pointer bg-[#D87D4A] px-8 py-4 text-sm font-semibold tracking-wider text-white uppercase transition-colors duration-300 hover:bg-orange-600"
+          >
             See Product
-          </button>
+          </Link>
         </div>
       </div>
     </section>

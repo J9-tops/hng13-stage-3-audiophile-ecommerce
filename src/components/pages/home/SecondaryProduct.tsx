@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SecondaryProductLink from "./links/SecondaryProductLink";
 
 export default function SecondaryProduct() {
   return (
@@ -9,9 +10,7 @@ export default function SecondaryProduct() {
             <h2 className="mb-8 text-2xl font-bold tracking-tight text-black md:text-4xl">
               ZX7 SPEAKER
             </h2>
-            <button className="transform cursor-pointer border-2 border-black bg-transparent px-8 py-4 font-semibold tracking-wider text-black transition-all duration-300 hover:bg-black hover:text-white">
-              SEE PRODUCT
-            </button>
+            <SecondaryProductLink />
           </div>
         </div>
 

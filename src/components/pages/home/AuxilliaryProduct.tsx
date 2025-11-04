@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuxiliaryProductLink from "./links/AuxiliaryProductLink";
 
 export default function AuxilliaryProduct() {
   return (
@@ -15,9 +16,7 @@ export default function AuxilliaryProduct() {
           <h2 className="mb-8 text-2xl font-bold tracking-tight text-black md:text-4xl">
             YX1 EARPHONES
           </h2>
-          <button className="w-fit transform cursor-pointer border-2 border-black bg-transparent px-8 py-4 font-semibold tracking-wider text-black transition-all duration-300 hover:bg-black hover:text-white">
-            SEE PRODUCT
-          </button>
+          <AuxiliaryProductLink />
         </div>
       </div>
     </section>
