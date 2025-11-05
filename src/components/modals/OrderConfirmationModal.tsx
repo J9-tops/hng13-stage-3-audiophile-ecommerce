@@ -43,11 +43,11 @@ export default function OrderConfirmationModal() {
       </div>
 
       <div className="mb-8 flex flex-col overflow-hidden rounded-lg md:flex-row">
-        <div className="flex-1 bg-gray-50 p-6">
+        <div className="flex-1 bg-[#F1F1F1] p-6">
           {displayItem && (
             <>
               <div className="mb-4 flex items-center gap-4">
-                <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded bg-white">
+                <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden">
                   <Image
                     src={displayItem.image.mobile}
                     alt={displayItem.name}
@@ -65,10 +65,11 @@ export default function OrderConfirmationModal() {
 
                 <div className="text-gray-500">x{displayItem.quantity}</div>
               </div>
-
+              {otherItemsCount > 0 && <hr className="mb-2 border-[#000]/8" />}
               {otherItemsCount > 0 && (
-                <p className="text-sm text-gray-500">
-                  and {otherItemsCount} other item(s)
+                <p className="text-center text-sm text-gray-500">
+                  and {otherItemsCount} other item
+                  {otherItemsCount > 1 ? "s" : ""}
                 </p>
               )}
             </>

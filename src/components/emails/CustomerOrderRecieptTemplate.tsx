@@ -266,11 +266,7 @@ const messageSection = {
 };
 
 const itemsSection = {
-  backgroundColor: "#f8fafc",
-  padding: "25px",
-  borderRadius: "8px",
   margin: "24px 0",
-  width: "100%",
 };
 
 const itemRow = {

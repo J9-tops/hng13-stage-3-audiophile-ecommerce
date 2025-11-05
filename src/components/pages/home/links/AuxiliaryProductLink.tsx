@@ -14,7 +14,7 @@ export default function AuxiliaryProductLink() {
 
   return (
     <Link
-      href={`/speakers/${topProduct?.slug}`}
+      href={`/earphones/${topProduct?.slug}`}
       className="w-fit transform cursor-pointer border-2 border-black bg-transparent px-8 py-4 font-semibold tracking-wider text-black transition-all duration-300 hover:bg-black hover:text-white"
     >
       SEE PRODUCT

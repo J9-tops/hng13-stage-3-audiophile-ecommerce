@@ -26,13 +26,11 @@ export default function MainDetails({ product }: { product: Product }) {
               </p>
             )}
 
-            <h1 className="text-4xl leading-tight font-bold text-black">
-              XX99 MARK II
-              <br />
-              HEADPHONES
+            <h1 className="text-4xl leading-tight font-bold text-black uppercase lg:max-w-sm">
+              {product.name}
             </h1>
 
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-lg">
+            <p className="mx-0 max-w-sm text-sm leading-relaxed text-gray-500 sm:mx-auto md:max-w-lg lg:mx-0 lg:max-w-lg lg:text-lg">
               {product?.features.split(".").slice(0, 2).join(".") + "."}
             </p>
 

@@ -10,7 +10,7 @@ export default function Features({ product }: { product: Product }) {
               FEATURES
             </h2>
 
-            <div className="space-y-6 leading-relaxed text-gray-600">
+            <div className="space-y-6 text-sm leading-relaxed text-gray-600 lg:text-lg">
               <p>{product.features}</p>
             </div>
           </div>
@@ -23,10 +23,12 @@ export default function Features({ product }: { product: Product }) {
             <div className="space-y-4">
               {product.includes.map((include, index) => (
                 <div key={index} className="flex items-start gap-6">
-                  <span className="min-w-12 text-lg font-bold text-[#D87D4A]">
+                  <span className="min-w-12 text-sm font-bold text-[#D87D4A] lg:text-lg">
                     {include.quantity}x
                   </span>
-                  <span className="text-lg text-gray-600">{include.item}</span>
+                  <span className="text-sm text-gray-600 lg:text-lg">
+                    {include.item}
+                  </span>
                 </div>
               ))}
             </div>
