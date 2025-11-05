@@ -37,7 +37,7 @@ export default function ImageGallery({ product }: { product: Product }) {
           <div className="group relative h-full min-h-168 overflow-hidden rounded-lg bg-gray-900">
             <Image
               src={
-                product?.gallery?.second?.desktop ||
+                product?.gallery?.third?.desktop ||
                 "/images/headphones/left.png"
               }
               width={635}
