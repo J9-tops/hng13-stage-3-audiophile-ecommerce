@@ -58,9 +58,9 @@ export default function SecondProduct() {
       <div className="mx-auto max-w-277.5 lg:min-h-100">
         <div className="flex transform grid-cols-1 flex-col-reverse items-center gap-8 text-center lg:grid lg:grid-cols-2 lg:text-left">
           <div className="flex flex-col justify-center space-y-4">
-            <h1 className="text-4xl leading-tight font-bold text-black lg:max-w-sm">
+            <h2 className="text-4xl leading-tight font-bold text-black lg:max-w-sm">
               {secondProduct?.name}
-            </h1>
+            </h2>
 
             <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
               {secondProduct?.features.split(".").slice(0, 2).join(".") + "."}

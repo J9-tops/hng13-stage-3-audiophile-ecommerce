@@ -22,7 +22,7 @@ export default function CartButtons({ product }: { product: Product }) {
       {!isInCart && (
         <button
           onClick={handleAddToCart}
-          className="h-16 bg-[#D87D4A] px-3 py-4 text-sm font-bold tracking-wider text-white transition-colors duration-300 hover:bg-[#FBAF85] lg:px-8"
+          className="h-16 cursor-pointer bg-[#D87D4A] px-3 py-4 text-sm font-bold tracking-wider text-white transition-colors duration-300 hover:bg-[#FBAF85] lg:px-8"
         >
           ADD TO CART
         </button>

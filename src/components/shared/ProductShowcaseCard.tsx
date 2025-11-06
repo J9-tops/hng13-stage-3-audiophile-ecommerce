@@ -35,9 +35,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className="rounded-lg bg-[#F1F1F1] p-6 pt-31 text-center shadow-sm">
-        <h3 className="mb-3.5 text-base font-bold tracking-wide md:text-xl">
+        <h2 className="mb-3.5 text-base font-bold tracking-wide md:text-xl">
           {product.title}
-        </h3>
+        </h2>
 
         <Link
           href={product.link}

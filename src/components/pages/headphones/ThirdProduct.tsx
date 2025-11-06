@@ -25,11 +25,11 @@ export default function ThirdProduct() {
             </div>
 
             <div className="flex flex-col justify-center space-y-4">
-              <h1 className="text-4xl leading-tight font-bold text-black">
+              <h2 className="text-4xl leading-tight font-bold text-black">
                 XX59
                 <br />
                 HEADPHONES
-              </h1>
+              </h2>
 
               <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
                 Enjoy your audio almost anywhere and customize it to your
@@ -69,9 +69,9 @@ export default function ThirdProduct() {
           </div>
 
           <div className="flex flex-col justify-center space-y-4">
-            <h1 className="text-4xl leading-tight font-bold text-black lg:max-w-sm">
+            <h2 className="text-4xl leading-tight font-bold text-black lg:max-w-sm">
               {thirdProduct?.name}
-            </h1>
+            </h2>
 
             <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
               {thirdProduct?.features.split(".").slice(0, 2).join(".") + "."}

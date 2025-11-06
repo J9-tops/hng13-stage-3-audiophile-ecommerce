@@ -2,7 +2,7 @@
 
 import useCartStore from "@/stores/cart";
 import { useModalStore } from "@/stores/modal";
-import { Minus, Plus, X } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -35,12 +35,6 @@ export default function CartModal() {
             className="text-sm text-gray-500 underline hover:text-gray-700"
           >
             Remove all
-          </button>
-          <button
-            onClick={handleClose}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            <X size={24} />
           </button>
         </div>
       </div>

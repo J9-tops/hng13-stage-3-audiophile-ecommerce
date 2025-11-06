@@ -75,9 +75,9 @@ export default function TopProduct() {
               NEW PRODUCT
             </p>
 
-            <h1 className="text-4xl leading-tight font-bold text-black">
+            <h2 className="text-4xl leading-tight font-bold text-black">
               {topProduct?.name}
-            </h1>
+            </h2>
 
             <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
               {topProduct?.features.split(".").slice(0, 2).join(".") + "."}

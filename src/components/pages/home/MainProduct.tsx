@@ -18,11 +18,11 @@ export default function MainProduct() {
             </div>
 
             <div className="space-y-6 text-center text-white lg:mt-22 lg:ml-12 lg:text-left">
-              <h2 className="text-3xl font-bold tracking-tight md:text-6xl lg:text-5xl">
+              <h3 className="text-3xl font-bold tracking-tight md:text-6xl lg:text-5xl">
                 ZX9
                 <br />
                 SPEAKER
-              </h2>
+              </h3>
               <p className="mx-auto max-w-sm text-center text-lg leading-relaxed font-normal text-white/90 lg:mx-0 lg:text-left">
                 Upgrade to premium speakers that are phenomenally built to
                 deliver truly remarkable sound.

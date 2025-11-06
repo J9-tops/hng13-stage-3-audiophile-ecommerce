@@ -13,9 +13,9 @@ export default function AuxilliaryProduct() {
           className="h-full w-full"
         />
         <div className="flex flex-col justify-center rounded-lg bg-[#F1F1F1] py-10 pl-6 align-middle md:pl-10 lg:pl-20">
-          <h2 className="mb-8 text-2xl font-bold tracking-tight text-black md:text-4xl">
+          <h3 className="mb-8 text-2xl font-bold tracking-tight text-black md:text-4xl">
             YX1 EARPHONES
-          </h2>
+          </h3>
           <AuxiliaryProductLink />
         </div>
       </div>
