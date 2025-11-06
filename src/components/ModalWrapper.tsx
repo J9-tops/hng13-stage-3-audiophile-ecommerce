@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 import { useModalStore } from "@/stores/modal";
 import { ModalStateType } from "@/types/modals";
 import { AnimatePresence, easeInOut, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import OrderConfirmationModal from "./modals/OrderConfirmationModal";
 
 const MODAL_ANIMATION = {
@@ -28,6 +29,8 @@ const renderModal = (modalState: ModalStateType) => {
 
 function ModalWrapper() {
   const { modalState, closeModal } = useModalStore();
+  const router = useRouter();
+  const prevModalType = useRef<ModalStateType["modalType"] | null>(null);
 
   useEffect(() => {
     const body = document.body;
@@ -48,6 +51,17 @@ function ModalWrapper() {
       body.style.paddingRight = "";
     };
   }, [modalState.status]);
+
+  useEffect(() => {
+    if (
+      prevModalType.current === "orderConfirmation" &&
+      modalState.status === "close"
+    ) {
+      router.replace("/");
+    }
+
+    prevModalType.current = modalState.modalType;
+  }, [modalState, router]);
 
   return (
     <AnimatePresence>
