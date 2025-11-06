@@ -5,10 +5,10 @@ import { useModalStore } from "@/stores/modal";
 import Icons from "../ui/icons";
 
 export default function CartButton() {
-  const { getTotalItems } = useCartStore();
+  const { cart } = useCartStore();
   const { updateModal } = useModalStore();
 
-  const totalItems = getTotalItems();
+  const totalItems = cart.length;
 
   const openCart = () => {
     updateModal({ status: "open", modalType: "cart" });
