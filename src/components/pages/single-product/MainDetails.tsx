@@ -15,7 +15,7 @@ export default function MainDetails({ product }: { product: Product }) {
               alt={product?.name || "XX99 Mark II Headphones"}
               width={250}
               height={250}
-              className="scale-120 object-cover"
+              className="scale-105 object-cover"
             />
           </div>
 
