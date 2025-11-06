@@ -9,13 +9,13 @@ export default function MainDetails({ product }: { product: Product }) {
       <div className="mx-auto max-w-277.5 lg:min-h-100">
         <GoBack />
         <div className="mt-10 grid grid-cols-1 items-center gap-8 text-left md:grid-cols-2">
-          <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
+          <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-120 lg:w-9/10">
             <Image
               src={product?.image?.desktop || "/images/headphones/sample.png"}
               alt={product?.name || "XX99 Mark II Headphones"}
               width={250}
               height={250}
-              className="object-contain"
+              className="scale-120 object-cover"
             />
           </div>
 

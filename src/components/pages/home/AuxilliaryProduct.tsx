@@ -4,7 +4,7 @@ import AuxiliaryProductLink from "./links/AuxiliaryProductLink";
 export default function AuxilliaryProduct() {
   return (
     <section>
-      <div className="mx-auto grid max-w-277.5 grid-cols-1 gap-4 px-6 md:grid-cols-2 lg:gap-7 lg:px-0">
+      <div className="mx-auto mb-8 grid max-w-277.5 grid-cols-1 gap-4 px-6 md:grid-cols-2 lg:gap-7 lg:px-0">
         <Image
           src="/images/home/earphones-2.png"
           alt="yx1 earphones"

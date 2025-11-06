@@ -11,16 +11,16 @@ export default function ThirdProduct() {
 
   if (!headphones) {
     return (
-      <section className="mb-20 px-6 py-16 md:px-12 lg:px-0">
+      <section className="mb-15 px-6 py-16 md:px-12 lg:px-0">
         <div className="mx-auto max-w-277.5 lg:min-h-100">
           <div className="grid grid-cols-1 items-center gap-8 text-center lg:grid-cols-2 lg:text-left">
             <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
               <Image
                 src="/images/headphones/sample-3.png"
                 alt="XX99 Mark II Headphones"
-                width={300}
-                height={300}
-                className="object-contain"
+                width={400}
+                height={400}
+                className="object-cover"
               />
             </div>
 
@@ -52,7 +52,7 @@ export default function ThirdProduct() {
   const products = headphones.filter((p) => !p.new);
   const thirdProduct = products[1];
   return (
-    <section className="mb-20 px-6 py-16 md:px-12 lg:px-0">
+    <section className="mb-20 px-6 py-8 md:px-12 lg:px-0">
       <div className="mx-auto max-w-277.5 lg:min-h-100">
         <div className="grid grid-cols-1 items-center gap-8 text-center lg:grid-cols-2 lg:text-left">
           <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
@@ -73,7 +73,7 @@ export default function ThirdProduct() {
               {thirdProduct?.name}
             </h2>
 
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
+            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-md">
               {thirdProduct?.features.split(".").slice(0, 2).join(".") + "."}
             </p>
 

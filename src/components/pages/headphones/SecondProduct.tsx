@@ -54,7 +54,7 @@ export default function SecondProduct() {
   const products = headphones.filter((p) => !p.new);
   const secondProduct = products[0];
   return (
-    <section className="mb-20 px-6 py-16 md:px-12 lg:px-0">
+    <section className="mb-15 px-6 py-8 md:px-12 lg:px-0">
       <div className="mx-auto max-w-277.5 lg:min-h-100">
         <div className="flex transform grid-cols-1 flex-col-reverse items-center gap-8 text-center lg:grid lg:grid-cols-2 lg:text-left">
           <div className="flex flex-col justify-center space-y-4">
@@ -62,7 +62,7 @@ export default function SecondProduct() {
               {secondProduct?.name}
             </h2>
 
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
+            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-md">
               {secondProduct?.features.split(".").slice(0, 2).join(".") + "."}
             </p>
 
@@ -83,9 +83,9 @@ export default function SecondProduct() {
                 "/images/headphones/sample-2.png"
               }
               alt={secondProduct?.name || "XX99 Mark I Headphones"}
-              width={250}
-              height={250}
-              className="object-contain"
+              width={400}
+              height={400}
+              className="object-cover"
             />
           </div>
         </div>

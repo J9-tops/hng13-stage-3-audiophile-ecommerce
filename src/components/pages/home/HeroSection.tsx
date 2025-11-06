@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#141414] px-6 py-16 md:py-20 lg:py-0">
+    <section className="relative flex w-full items-center justify-center overflow-hidden bg-[#141414] px-6 py-16 md:py-20 lg:py-10 2xl:min-h-auto">
       <div className="relative mx-auto flex w-full max-w-277.5 items-center justify-center lg:justify-between">
         <div className="absolute inset-0 flex items-center justify-center lg:relative lg:order-2 lg:w-1/2">
-          <div className="relative aspect-square w-full max-w-md lg:max-w-lg">
-            <div className="absolute inset-0 flex items-center justify-center p-8">
+          <div className="relative aspect-square w-full max-w-md bg-[#131313]/90 lg:max-w-lg">
+            <div className="absolute inset-0 flex items-center justify-center bg-[#131313]/70 p-8">
               <Image
                 width={500}
                 height={500}
@@ -19,25 +19,25 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-10 text-center lg:order-1 lg:w-1/2 lg:pr-12 lg:text-left">
+        <div className="relative z-10 h-auto text-center lg:order-1 lg:w-1/2 lg:pr-12 lg:text-left">
           <p className="mb-6 text-xs tracking-[0.5em] text-[#898989] uppercase md:text-sm">
             New Product
           </p>
 
-          <h1 className="mb-6 text-4xl leading-tight font-bold text-white md:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl leading-tight font-bold text-white md:text-5xl">
             XX99 MARK II
             <br />
             HEADPHONES
           </h1>
 
-          <p className="mx-auto mb-8 max-w-md text-base leading-relaxed text-[#C4C4C4] md:text-lg lg:mx-0">
+          <p className="mx-auto mb-10 max-w-[430px] text-base leading-relaxed text-[#C4C4C4] md:text-lg lg:mx-0">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
 
           <Link
             href="/headphones/xx99-mark-two-headphones"
-            className="cursor-pointer bg-[#D87D4A] px-8 py-4 text-sm font-semibold tracking-wider text-white uppercase transition-colors duration-300 hover:bg-orange-600"
+            className="mt-3 cursor-pointer bg-[#D87D4A] px-8 py-4 text-sm font-semibold tracking-wider text-white uppercase transition-colors duration-300 hover:bg-[#FBAF85]"
           >
             See Product
           </Link>

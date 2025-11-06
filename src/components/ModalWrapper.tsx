@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useModalStore } from "@/stores/modal";
 import { ModalStateType } from "@/types/modals";
 import { AnimatePresence, easeInOut, motion } from "framer-motion";
+import { useEffect } from "react";
 import OrderConfirmationModal from "./modals/OrderConfirmationModal";
 
 const MODAL_ANIMATION = {
@@ -27,6 +28,26 @@ const renderModal = (modalState: ModalStateType) => {
 
 function ModalWrapper() {
   const { modalState, closeModal } = useModalStore();
+
+  useEffect(() => {
+    const body = document.body;
+
+    if (modalState.status !== "close") {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+      body.style.overflow = "hidden";
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      body.style.overflow = "";
+      body.style.paddingRight = "";
+    }
+
+    return () => {
+      body.style.overflow = "";
+      body.style.paddingRight = "";
+    };
+  }, [modalState.status]);
 
   return (
     <AnimatePresence>

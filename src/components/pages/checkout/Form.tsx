@@ -6,6 +6,7 @@ import { useModalStore } from "@/stores/modal";
 import { CheckoutFormValues, checkoutSchema } from "@/types/checkout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
@@ -275,7 +276,7 @@ export default function Form() {
             <h2 className="mb-6 text-sm font-bold tracking-wide text-[#D87D4A]">
               PAYMENT DETAILS
             </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <label
                   className={`mb-2 block text-xs font-bold ${errors.paymentMethod ? "text-[#CD2C2C]" : ""}`}
@@ -285,7 +286,7 @@ export default function Form() {
               </div>
               <div className="flex flex-col space-y-4">
                 <div
-                  className={`flex cursor-pointer items-center rounded-lg border-2 p-4 ${paymentMethod === "e-money" ? "border-[#D87D4A]" : "border-gray-300"}`}
+                  className={`flex cursor-pointer items-center rounded-lg border-2 p-4 ${paymentMethod === "e-money" ? "border-[#D87D4A]" : ""} ${errors.paymentMethod ? "border-[#CD2C2C]" : "border-gray-300"}`}
                 >
                   <input
                     type="radio"
@@ -302,7 +303,7 @@ export default function Form() {
                   </label>
                 </div>
                 <div
-                  className={`flex cursor-pointer items-center rounded-lg border-2 p-4 ${paymentMethod === "cash-on-delivery" ? "border-[#D87D4A]" : "border-gray-300"}`}
+                  className={`flex cursor-pointer items-center rounded-lg border-2 p-4 ${paymentMethod === "e-money" ? "border-[#D87D4A]" : ""} ${errors.paymentMethod ? "border-[#CD2C2C]" : "border-gray-300"}`}
                 >
                   <input
                     type="radio"
@@ -320,7 +321,7 @@ export default function Form() {
                 </div>
               </div>
               {errors.paymentMethod && (
-                <p className="mt-1 text-xs text-[#CD2C2C] md:col-span-2">
+                <p className="absolute -top-6 right-0 mt-1 text-xs text-[#CD2C2C] md:col-span-1">
                   {errors.paymentMethod.message}
                 </p>
               )}
@@ -368,6 +369,17 @@ export default function Form() {
                     </p>
                   )}
                 </div>
+              </div>
+            )}
+            {paymentMethod === "cash-on-delivery" && (
+              <div className="mt-6 flex items-center gap-6">
+                <Image src="/cash.svg" alt="" width={48} height={48} />
+                <p className="max-w-lg text-sm text-black/50">
+                  The &apos;Cash on Delivery&apos; option enables you to pay in
+                  cash when our delivery courier arrives at your residence. Just
+                  make sure your address is correct so that your order will not
+                  be cancelled.
+                </p>
               </div>
             )}
           </section>

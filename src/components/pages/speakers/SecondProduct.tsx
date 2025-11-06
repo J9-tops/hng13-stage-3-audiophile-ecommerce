@@ -36,13 +36,13 @@ export default function SecondProduct() {
               </div>
             </div>
 
-            <div className="flex h-full w-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
+            <div className="flex h-full w-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-120 lg:w-9/10">
               <Image
                 src="/images/speakers/sample-2.png"
                 alt="ZX7 SPEAKER"
                 width={250}
                 height={250}
-                className="object-contain"
+                className="object-cover"
               />
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function SecondProduct() {
               {secondProduct?.name}
             </h2>
 
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
+            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-md">
               {secondProduct?.features.split(".").slice(0, 2).join(".") + "."}
             </p>
 
@@ -84,7 +84,7 @@ export default function SecondProduct() {
               alt={secondProduct?.name || "ZX7 SPEAKER"}
               width={250}
               height={250}
-              className="object-contain"
+              className="object-cover"
             />
           </div>
         </div>

@@ -4,19 +4,13 @@ import useCartStore from "@/stores/cart";
 import { useModalStore } from "@/stores/modal";
 import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function CartModal() {
   const { cart, updateItemQuantity, clearCart, getTotalPrice } = useCartStore();
   const { updateModal } = useModalStore();
-  const router = useRouter();
 
   const handleCheckout = () => {
-    updateModal({ status: "close", modalType: "cart" });
-    router.push("/checkout");
-  };
-
-  const handleClose = () => {
     updateModal({ status: "close", modalType: "cart" });
   };
 
@@ -101,13 +95,24 @@ export default function CartModal() {
           <span className="text-lg text-gray-500">TOTAL</span>
           <span className="text-lg font-bold">${total.toLocaleString()}</span>
         </div>
-        <button
-          onClick={handleCheckout}
-          disabled={cart.length === 0}
-          className="w-full cursor-pointer bg-[#D87D4A] py-3 text-lg font-semibold text-white transition-colors hover:bg-[#C17A4F] disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          CHECKOUT
-        </button>
+        {cart.length < 1 && (
+          <button
+            onClick={handleCheckout}
+            disabled={cart.length === 0}
+            className="w-full cursor-pointer bg-[#D87D4A] py-3 text-lg font-semibold text-white transition-colors hover:bg-[#C17A4F] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            CHECKOUT
+          </button>
+        )}
+        {cart.length > 0 && (
+          <Link
+            onClick={handleCheckout}
+            href="/checkout"
+            className="block w-full cursor-pointer bg-[#D87D4A] py-3 text-center text-lg font-semibold text-white transition-colors hover:bg-[#C17A4F] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            CHECKOUT
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function TopProduct() {
   });
   if (!speakers) {
     return (
-      <section className="mb-20 px-6 py-16 md:px-12 lg:px-0">
+      <section className="mt-10 px-6 py-16 md:px-12 lg:px-0">
         <div className="mx-auto max-w-277.5 lg:min-h-100">
           <div className="grid grid-cols-1 items-center gap-8 text-center lg:grid-cols-2 lg:text-left">
             <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
@@ -35,7 +35,7 @@ export default function TopProduct() {
                 SPEAKER
               </h2>
 
-              <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
+              <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-md">
                 Upgrade your sound system with the all new ZX9 active speaker.
                 It&apos;s a bookshelf speaker system that offers truly wireless
                 connectivity -- creating new possibilities for more pleasing and
@@ -57,16 +57,16 @@ export default function TopProduct() {
   const topProduct = speakers.find((p) => p.new === true);
 
   return (
-    <section className="mb-20 px-6 py-16 md:px-12 lg:px-0">
+    <section className="mt-10 px-6 py-16 md:px-12 lg:px-0">
       <div className="mx-auto max-w-277.5 lg:min-h-100">
         <div className="grid grid-cols-1 items-center gap-8 text-center lg:grid-cols-2 lg:text-left">
-          <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-100 lg:w-9/10">
+          <div className="flex h-full justify-center rounded-lg bg-[#F1F1F1] p-10 lg:h-110 lg:w-9/10">
             <Image
               src={topProduct?.image?.desktop || "/images/speakers/sample.png"}
               alt={topProduct?.name || "ZX9 SPEAKER"}
               width={250}
               height={250}
-              className="object-contain"
+              className="object-cover"
             />
           </div>
 
@@ -79,7 +79,7 @@ export default function TopProduct() {
               {topProduct?.name}
             </h2>
 
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-sm">
+            <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-500 md:max-w-lg lg:mx-0 lg:max-w-md">
               {topProduct?.features.split(".").slice(0, 2).join(".") + "."}
             </p>
 

@@ -8,7 +8,7 @@ export default function GoBack() {
   return (
     <button
       onClick={() => router.back()}
-      className="cursor-pointer py-2 hover:underline"
+      className="cursor-pointer py-2 text-[#000]/50 hover:text-black hover:underline"
     >
       Go Back
     </button>
