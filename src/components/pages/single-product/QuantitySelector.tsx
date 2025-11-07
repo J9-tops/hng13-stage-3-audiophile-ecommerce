@@ -19,7 +19,7 @@ const QuantitySelector = ({ product }: { product: Product }) => {
   };
 
   return (
-    <div className="flex items-center gap-6 bg-gray-200 px-3 py-4 lg:px-6">
+    <div className="flex items-center gap-6 bg-gray-200 px-3 py-2.5 lg:px-6">
       <button
         onClick={decrease}
         className="flex h-8 w-8 cursor-pointer items-center justify-center text-2xl font-bold text-gray-400 transition-colors duration-200 hover:text-orange-500"

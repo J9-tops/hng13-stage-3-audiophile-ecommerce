@@ -6,6 +6,7 @@ import { DollarSign, Hash, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { api } from "../../../../convex/_generated/api";
+import GoBack from "../single-product/GoBack";
 
 type Props = {
   userId: string;
@@ -51,8 +52,9 @@ export default function AllOrders({ userId }: Props) {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-8 lg:p-12">
-      <div className="mx-auto max-w-5xl">
-        <h1 className="mb-8 text-3xl font-extrabold text-gray-900">
+      <div className="mx-auto max-w-277.5">
+        <GoBack />
+        <h1 className="mt-6 mb-8 text-3xl font-extrabold text-gray-900">
           Your Orders
         </h1>
 

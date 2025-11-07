@@ -4,6 +4,7 @@ import useCartStore from "@/stores/cart";
 import { useModalStore } from "@/stores/modal";
 import { Check } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function OrderConfirmationModal() {
@@ -14,7 +15,11 @@ export default function OrderConfirmationModal() {
   const handleBackToHome = () => {
     clearCart();
     updateModal({ status: "close", modalType: "orderConfirmation" });
-    router.replace("/orders");
+    router.replace("/");
+  };
+
+  const closeConfirmationModal = () => {
+    updateModal({ status: "close", modalType: "orderConfirmation" });
   };
 
   const total = getTotalPrice();
@@ -38,8 +43,16 @@ export default function OrderConfirmationModal() {
         </h1>
 
         <p className="text-base text-gray-500">
-          You will receive an email confirmation shortly.
+          You will receive an email confirmation shortly. You can view your{" "}
+          <Link
+            href="/orders"
+            onClick={closeConfirmationModal}
+            className="inline-block font-bold underline hover:text-black hover:no-underline"
+          >
+            orders
+          </Link>
         </p>
+        <p className="text-base text-gray-500"></p>
       </div>
 
       <div className="mb-8 flex flex-col overflow-hidden rounded-lg md:flex-row">
