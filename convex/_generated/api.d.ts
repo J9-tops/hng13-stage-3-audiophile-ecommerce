@@ -10,6 +10,7 @@
 
 import type * as orders from "../orders.js";
 import type * as products from "../products.js";
+import type * as scripts_populateOldOrders from "../scripts/populateOldOrders.js";
 import type * as seedRunner from "../seedRunner.js";
 
 import type {
@@ -29,6 +30,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   orders: typeof orders;
   products: typeof products;
+  "scripts/populateOldOrders": typeof scripts_populateOldOrders;
   seedRunner: typeof seedRunner;
 }>;
 declare const fullApiWithMounts: typeof fullApi;

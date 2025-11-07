@@ -59,6 +59,7 @@ export default defineSchema({
     .index("by_category", ["category"]),
 
   orders: defineTable({
+    userId: v.string(),
     orderNumber: v.string(),
     orderDate: v.string(),
 
@@ -103,6 +104,7 @@ export default defineSchema({
     updatedAt: v.number(),
   })
     .index("by_order_number", ["orderNumber"])
+    .index("by_user_id", ["userId"])
     .index("by_customer_email", ["customerEmail"])
     .index("by_status", ["status"])
     .index("by_created_at", ["createdAt"]),

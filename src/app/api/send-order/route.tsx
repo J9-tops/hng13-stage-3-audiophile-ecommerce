@@ -16,6 +16,7 @@ interface OrderItem {
 }
 
 interface OrderData {
+  userId: string;
   name: string;
   email: string;
   phoneNumber: string;
@@ -104,6 +105,7 @@ export async function POST(req: NextRequest) {
     });
 
     const orderId = await convex.mutation(api.orders.create, {
+      userId: orderData.userId,
       orderNumber,
       orderDate,
       customerName: orderData.name,

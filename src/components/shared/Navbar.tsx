@@ -17,7 +17,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="relative bg-[#141414] text-white">
+    <nav
+      className={`relative text-white ${pathname === "/" ? "bg-[#131313]" : "bg-[#141414]"}`}
+    >
       <div className="mx-auto flex max-h-24 max-w-277.5 items-center justify-between border-b border-white/20 px-4 py-8.75 xl:px-0">
         <div className="flex items-center gap-5">
           <MobileNav links={navLinks} />

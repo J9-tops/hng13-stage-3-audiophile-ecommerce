@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex w-full items-center justify-center overflow-hidden bg-[#141414] px-6 py-16 md:py-20 lg:py-10 2xl:min-h-auto">
+    <section className="relative flex w-full items-center justify-center overflow-hidden bg-[#131313] px-6 py-30 md:py-20 lg:py-10 2xl:min-h-auto">
       <div className="relative mx-auto flex w-full max-w-277.5 items-center justify-center lg:justify-between">
         <div className="absolute inset-0 flex items-center justify-center lg:relative lg:order-2 lg:w-1/2">
           <div className="relative aspect-square w-full max-w-md bg-[#131313]/90 lg:max-w-lg">
-            <div className="absolute inset-0 flex items-center justify-center bg-[#131313]/70 p-8">
+            <div className="absolute inset-0 flex items-center justify-center bg-[#131313]">
               <Image
                 width={500}
                 height={500}
                 src="/assets/headphones.png"
                 alt="XX99 Mark II Headphones"
-                className="h-full w-full object-contain"
+                className="h-full w-full scale-110 object-cover"
               />
             </div>
           </div>

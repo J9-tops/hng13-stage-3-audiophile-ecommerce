@@ -14,7 +14,7 @@ export default function OrderConfirmationModal() {
   const handleBackToHome = () => {
     clearCart();
     updateModal({ status: "close", modalType: "orderConfirmation" });
-    router.replace("/");
+    router.replace("/orders");
   };
 
   const total = getTotalPrice();

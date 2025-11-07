@@ -3,6 +3,7 @@ import { mutation, query } from "./_generated/server";
 
 export const create = mutation({
   args: {
+    userId: v.string(),
     orderNumber: v.string(),
     orderDate: v.string(),
     customerName: v.string(),
@@ -60,6 +61,17 @@ export const getByOrderNumber = query({
         q.eq("orderNumber", args.orderNumber),
       )
       .first();
+  },
+});
+
+export const getByUserId = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("orders")
+      .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
+      .order("desc")
+      .collect();
   },
 });
 
@@ -130,9 +142,40 @@ export const getStats = query({
   },
 });
 
+export const getUserStats = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const orders = await ctx.db
+      .query("orders")
+      .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
+      .collect();
+
+    const stats = {
+      totalOrders: orders.length,
+      totalSpent: orders.reduce((sum, order) => sum + order.total, 0),
+      pending: orders.filter((o) => o.status === "pending").length,
+      processing: orders.filter((o) => o.status === "processing").length,
+      shipped: orders.filter((o) => o.status === "shipped").length,
+      delivered: orders.filter((o) => o.status === "delivered").length,
+      cancelled: orders.filter((o) => o.status === "cancelled").length,
+    };
+
+    return stats;
+  },
+});
+
 export const deleteOrder = mutation({
   args: { orderId: v.id("orders") },
   handler: async (ctx, args) => {
     await ctx.db.delete(args.orderId);
   },
+});
+
+export const backfillUserId = mutation(async ({ db }) => {
+  const orders = await db.query("orders").collect();
+  for (const order of orders) {
+    if (!order.userId) {
+      await db.patch(order._id, { userId: "unknown" });
+    }
+  }
 });

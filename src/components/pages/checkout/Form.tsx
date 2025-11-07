@@ -4,6 +4,7 @@ import Summary from "@/components/pages/checkout/Summary";
 import useCartStore from "@/stores/cart";
 import { useModalStore } from "@/stores/modal";
 import { CheckoutFormValues, checkoutSchema } from "@/types/checkout";
+import { generateUserId, getUserId } from "@/utils/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Image from "next/image";
@@ -51,6 +52,12 @@ export default function Form() {
     try {
       setPaying(true);
 
+      let userId = getUserId();
+
+      if (!userId) {
+        userId = generateUserId();
+      }
+
       const subtotal = getTotalPrice();
       const shipping = 500;
       const vat = 400;
@@ -64,6 +71,7 @@ export default function Form() {
       }));
 
       const fullData = {
+        userId,
         name: data.name,
         email: data.email,
         phoneNumber: data.phoneNumber,
@@ -81,7 +89,6 @@ export default function Form() {
         total,
       };
 
-      console.log("Sending order data:", fullData);
       await axios.post(`/api/send-order`, fullData);
 
       toast.success("Order placed successfully!");
