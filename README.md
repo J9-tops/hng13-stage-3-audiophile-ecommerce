@@ -2,6 +2,8 @@
 
 A modern, responsive e-commerce storefront built with Next.js and Convex for the data/backend layer. The project contains a Next.js App Router front-end, a small Convex backend (schema, functions, seeds), and utilities for sending order emails.
 
+![Audiophiles Website](public/audio.PNG)
+
 This README explains how to get the project running locally, how to start Convex for local development, and how to run the provided seed scripts.
 
 ## Key features
